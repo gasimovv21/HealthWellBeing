@@ -34,6 +34,7 @@ def send_message(request):
             response = requests.post('https://api.openai.com/v1/completions', headers=headers, json=post_data)
             content = response.content
             data=json.loads(content)
+            print(data)
             answer_from_bot = data["choices"][0]["text"].replace('\n', '')
             return Response(answer_from_bot, status=status.HTTP_201_CREATED)
         return Response(send_message_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
