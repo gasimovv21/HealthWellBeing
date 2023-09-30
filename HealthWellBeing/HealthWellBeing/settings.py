@@ -17,7 +17,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'channels',
 ]
 
 MIDDLEWARE = [
@@ -83,8 +82,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-ASGI_APPLICATION = "HealthWellBeing.routing.application"
 
 
 bearer_token = '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' # CLOSE THIS FILE .ENV

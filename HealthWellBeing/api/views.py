@@ -24,15 +24,4 @@ def getRoutes(request):
 @api_view(['POST'])
 def post_message(request):
     if request.method == 'POST':
-        response = send_message(request)
-        # Отправка сообщения по WebSocket
-        channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            'admin01',  # Имя группы WebSocket соединений
-            {
-                'type': 'some.message',  # Тип сообщения
-                'message': 'Привет, клиенты WebSocket!'
-            }
-        )
-
-        return response
+        return send_message(request)
