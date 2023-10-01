@@ -21,7 +21,7 @@ def send_message(request):
         send_message_serializer = SendMessageSerializer(data=data_for_serializer)
         if send_message_serializer.is_valid():
             send_message_serializer.save()
-            bearer_token = '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'
+            bearer_token = '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'
             headers = {
                 'Authorization': f'Bearer {bearer_token}',
             }
@@ -34,7 +34,6 @@ def send_message(request):
             response = requests.post('https://api.openai.com/v1/completions', headers=headers, json=post_data)
             content = response.content
             data=json.loads(content)
-            print(data)
             answer_from_bot = data["choices"][0]["text"].replace('\n', '')
             return Response(answer_from_bot, status=status.HTTP_201_CREATED)
         return Response(send_message_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
